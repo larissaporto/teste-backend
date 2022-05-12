@@ -6,7 +6,8 @@ RUN apk --update --upgrade add \
       bash\
       sqlite-dev\
       build-base\
-      tzdata
+      tzdata\
+      gcompat
 
 ENV INSTALL_PATH /teste-backend
 
