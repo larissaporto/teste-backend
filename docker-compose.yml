@@ -42,6 +42,8 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: teste_backend_app
+    environment:
+      DB_HOST: mongo
     volumes:
       - .:/teste-backend
     depends_on:
@@ -57,9 +59,11 @@ services:
   mongo:
     image: mongo
     restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+    #environment:
+      # MONGO_INITDB_ROOT_USERNAME: root
+      # MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - mongo-data:/data/db
     networks: 
       - broker-kafka
 
@@ -78,3 +82,6 @@ services:
 networks:
   broker-kafka:
     driver: bridge
+
+volumes:
+  mongo-data:
